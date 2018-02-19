@@ -10,7 +10,7 @@ channel <- odbcConnect("banco", uid="usuario", pwd="senha", believeNRows=FALSE)
 odbcGetInfo(channel)
 
 # Find out what tables are available (Optional)
-Tables <- sqlTables(channel, schema="PROD2")
+Tables <- sqlTables(channel, schema="schema")
 
 View(Tables)
 
