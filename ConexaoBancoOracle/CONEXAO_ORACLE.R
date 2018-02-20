@@ -1,9 +1,16 @@
 #Conexão com Oracle
 
 # Load RODBC package
-install.packages('RODBC')
+install.packages(c('RODBC','ODB','RMYSQL','DBI','RJDBC','rJava'))
 
 library(RODBC)
+library(ODB)
+library(rJava)
+library(DBI)
+library(RJDBC)
+library(odbc)
+library(RMySQL)
+
 
 # Create a connection to the database called "channel"
 channel <- odbcConnect("banco", uid="usuario", pwd="senha", believeNRows=FALSE)
@@ -22,3 +29,11 @@ dataframe <- sqlQuery(channel, "Select * From PROD2.EMAIL")
 View(dataframe)
 
 odbcClose(channel)
+
+
+#MySQL
+
+con <- dbConnect(MySQL(),
+                 user="root", password="260775",
+                 dbname="BigData", host="localhost")
+on.exit(dbDisconnect(con))
