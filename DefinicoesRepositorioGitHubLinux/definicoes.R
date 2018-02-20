@@ -41,4 +41,3 @@ clip < ~/.ssh/id_rsa.pub
 git config --global user.email "luciano.teixeiras@gmail.com"
 git config --global user.name "LucianoTeixeiras"
 git config --global credential.helper 'cache --timeout=10000000'
-
