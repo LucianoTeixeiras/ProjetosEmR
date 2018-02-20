@@ -1,6 +1,8 @@
 #Conexão com Oracle
 
 # Load RODBC package
+install.packages('RODBC')
+
 library(RODBC)
 
 # Create a connection to the database called "channel"
