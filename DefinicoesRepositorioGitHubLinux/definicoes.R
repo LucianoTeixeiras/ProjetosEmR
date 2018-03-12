@@ -34,7 +34,7 @@ ssh-add ~/.ssh/id_rsa
 3- Agora, vamos associar a chave que geramos à nossa conta do Github. 
 Para copiar a chave do bash, digite o seguinte comando:
   
-clip < ~/.ssh/id_rsa.pub  
+clip < ~/.ssh/id_rsa.pub
 
 #Tools/Shell
 
