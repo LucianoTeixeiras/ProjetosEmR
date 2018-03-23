@@ -1,4 +1,4 @@
-#Teste de comunicação com o repositorio
+﻿#Teste de comunicação com o repositorio
 
 #1- Precisamos gerar uma chave SSH que seu computador vai usar pra se autorizar com o Github. Digite o seguinte comando no Git Bash:
   
@@ -19,20 +19,19 @@ Se quiser deixar sem, só dê enter. Se não, coloque a senha e confirme.
 
 Em seguida, você verá uma mensagem dizendo que deu tudo certo:
   
-  Your identification has been saved in /Users/you/.ssh/id_rsa.  
+# Your identification has been saved in /Users/you/.ssh/id_rsa.  
 # Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
 # The key fingerprint is:
 # 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db seuemail@dominio.com
 2- Agora, precisamos adicionar a chave que criamos ao ssh-agent. Primeiro, vamos ativa-lo:
   
-  ssh-agent -s  
+ssh-agent -s
 
-Em seguida, vamos adicionar a chave que geramos ao ssh-agent:
-  
+#Em seguida, vamos adicionar a chave que geramos ao ssh-agent:
+
 ssh-add ~/.ssh/id_rsa
 
-3- Agora, vamos associar a chave que geramos à nossa conta do Github. 
-Para copiar a chave do bash, digite o seguinte comando:
+#3- Agora, vamos associar a chave que geramos à nossa conta do Github. Para copiar a chave do bash, digite o seguinte comando:
   
 clip < ~/.ssh/id_rsa.pub
 
