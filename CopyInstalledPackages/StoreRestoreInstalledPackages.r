@@ -5,13 +5,13 @@
 tmp = installed.packages()
 
 installedpackages = as.vector(tmp[is.na(tmp[,"Priority"]), 1])
-save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/installed_packages-RAPD.rda")
+save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/installed_packages-LTS-02.rda")
 
 
 # restore_packages.R
 #
 # installs each package from the stored list of packages
 
-load("~/GitHub/ProjetosEmR/CopyInstalledPackages/installed_packages-RAPD.rda")
+load("~/GitHub/ProjetosEmR/CopyInstalledPackages/installed_packages-LTS-02.rda")
 
 for (count in 1:length(installedpackages)) install.packages(installedpackages[count])
