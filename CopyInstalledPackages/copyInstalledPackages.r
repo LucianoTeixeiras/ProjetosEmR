@@ -1,7 +1,7 @@
 # run on old computer / r version
 setwd("~/GitHub/ProjetosEmR/CopyInstalledPackages")
 packages <- installed.packages()[,"Package"]
-save(packages, file="Rpackages")
+save(packages, file="packages-LTS-02")
 
 
 # run on new computer / r version
