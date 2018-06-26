@@ -1,0 +1,28 @@
+E-waste; Reverse logistics; RFID; Solid waste
+Design of experiments; Guidelines for packaging; RFID; Taguchi methods
+cloud computing; EPCglobal Network; EPCIS; NoSQL; performance; RFID
+cell manufacturing; RFID; traceability; wireless communication
+EPC; EPCglobal; internet of things; logistic; traceability
+analog front-end (AFE); CMOS integrated circuit design; passive tags; Radio Frequency Identification (RFID)
+Beef supply chain; Evaluation; Harvest facility; Identification technology; RFID
+cmos integrated circuit design; passive tags; radio frequency identification; rfid
+Electronic cane consignment; GIS; GPS; Harvesting; Rfid tags; Sugarcane; Transport; ZigBee
+Guidelines for packaging; RFID design of experiments; Taguchi methods
+Beef chain; Evaluation; Harvest facility; RFID
+Innovation networks; RFID; Supply chain; Technological cooperation
+Communication technologies; Computer applications; Information management; Information services; Information systems; Innovation
+Cattle supply chain; Consumer privacy.; Context; Legislation; Operations; Radio Frequency Identification; RFID
+DEMIS; Elementary PNRD; Petri net; RFID; Tag data structure
+Electronic cane consignment; GIS; GPS; Harvesting; RFID tags; Sugarcane; Transport; ZigBee
+Brazil; Communication technologies; Identification; Innovation; Radiofrequencies; Supply chain management
+Case studies.; China; Industry; Information technology; Innovation; Logistics; Radio frequency identification; RFID; Supply chain
+Domain engineering; Rfid systems; Software product lines; Supply chain management
+Middleware; Real-time; RFID; Supervision; Tracking; Wi-Fi; Wireless
+Inventory evaluation management; Network management; NGN; RFID; WDM optical networks
+Anti-collision simulation algorithms; Radio frequency identification (RFID); RFID physical simulation environment
+Domain analysis; Domain engineering; RFID; Software product line; Supply chain management
+Automobile industry; Closed loops; Data processing; Embedded systems; Environmental engineering; Garbage; Manufacturing systems; Transponders
+RFID; Reverse Logistics; Solid Waste; E-waste
+RFID; Design of experiments; Guidelines for packaging; Taguchi methods
+Beef Chain; Developing Countries; Mobile Technology; Risk; Supply Chain Management
+electronic cane consignment; GIS; GPS; harvesting; RFID tags; sugarcane; transport; ZigBee
