@@ -5,8 +5,10 @@
 tmp = installed.packages()
 
 installedpackages = as.vector(tmp[is.na(tmp[,"Priority"]), 1])
-save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/Packages-LTS-02.rda")
 
+installedpackages
+
+save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/Packages-LTS-02.rda")
 
 # restore_packages.R
 #
