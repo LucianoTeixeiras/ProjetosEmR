@@ -1,5 +1,6 @@
 # run on old computer / r version
 setwd("~/GitHub/ProjetosEmR/CopyInstalledPackages")
+
 packages <- installed.packages()[,"Package"]
 
 packages
