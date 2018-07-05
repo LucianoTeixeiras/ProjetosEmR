@@ -1,0 +1,6 @@
+iris
+iris3
+
+library(xlsx)
+write.xlsx(iris3, "D:/Users/Luciano Teixeira/Downloads/iris.xlsx")
+

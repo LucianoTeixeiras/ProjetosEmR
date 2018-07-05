@@ -37,3 +37,10 @@ git config --global credential.helper 'cache --timeout=10000000'
 git config --global user.email "luciano.teixeiras@gmail.com"
 git config --global user.name "luciano.teixeiras"
 git config --global credential.helper 'cache --timeout=10000000'
+
+# GitSubtree
+
+git remote add EstatisticaTeoriaPratica https://github.com/LucianoTeixeiras/UdemyEstatisticaTeoriaPratica.git
+
+git subtree add --prefix=EstatisticaTeoriaPratica/ EstatisticaTeoriaPratica master
+
