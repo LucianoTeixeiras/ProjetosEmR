@@ -43,4 +43,3 @@ git config --global credential.helper 'cache --timeout=10000000'
 git remote add EstatisticaTeoriaPratica https://github.com/LucianoTeixeiras/UdemyEstatisticaTeoriaPratica.git
 
 git subtree add --prefix=EstatisticaTeoriaPratica/ EstatisticaTeoriaPratica master
-
