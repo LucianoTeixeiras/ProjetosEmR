@@ -1,10 +1,8 @@
 ---
-title: "Teste R Markdown"
+title: "TestePDF"
 author: "Luciano Teixeira"
-date: "23 de junho de 2018"
-output:
-  pdf_document: default
-  html_document: default
+date: "9/25/2018"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
