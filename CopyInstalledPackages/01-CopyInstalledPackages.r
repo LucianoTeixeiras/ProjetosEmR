@@ -22,4 +22,4 @@ load("Packages-LTS-02")
 
 for (p in setdiff(packages, installed.packages()[,"Package"]))
 
-install.packages(p)
+install.packages(p, dependencies = TRUE)
