@@ -8,12 +8,12 @@ installedpackages = as.vector(tmp[is.na(tmp[,"Priority"]), 1])
 
 installedpackages
 
-save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/Packages-LTS-02.rda")
+save(installedpackages, file="~/GitHub/ProjetosEmR/CopyInstalledPackages/Packages.rda")
 
 # restore_packages.R
 #
 # installs each package from the stored list of packages
 
-load("~/GitHub/ProjetosEmR/CopyInstalledPackages/packages-LTS-02.rda")
+load("~/GitHub/ProjetosEmR/CopyInstalledPackages/Packages.rda")
 
-for (count in 1:length(installedpackages)) install.packages(installedpackages[count])
+for (count in 1:length(installedpackages)) install.packages(installedpackages[count],dependencies = TRUE)
