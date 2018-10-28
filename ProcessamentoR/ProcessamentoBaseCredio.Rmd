@@ -1,0 +1,238 @@
+---
+title: "Processamento Base de Dados de Crédito"
+author: "Luciano Teixeira"
+date: "27 de outubro de 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Processamento Base de Dados de Crédito
+
+O propósio deste relatorio é analisar ma base de dados de crédito com 2000 registros, identificando qual dos clientes, ao solicitar um impréstimo, possui a maior chance de efetuar o pagamento ou não deste impréstimo, levando em consideração:
+
+##1-Idade
+##2-Renda
+##3-Historico Financeiro
+
+Foram, uilizados três algoritmos de Machine Learning para avaliar a mesma base:
+
+##1-Naive Bayes
+##2-Regressão Logística
+##3-Árvore de Decisão
+
+Para estes algorítmos, foram adotas alguns procedimentos de ajustes, "ETL", para eventuais correções, alterações, seja por conta de categorias de variaveis, seja por erro oriundos de intervenções manuais
+
+
+##1- Importação da base de dados, com o propósito de ler o arquivo csv para sua classificação;
+##2- Eliminação da coluna de clientid, pois não há propósito de categoria ou calssificação desta coluna;
+##3- Substituição de valores negativos pela média de idade positiva da base, a fim de minimizar a interferencia nos dados;
+##4- Substituição de vaores nulos "NA" pela média da idade possitiva, a fim de minimizar a interferencia nos dados;
+##5- Efetuado o nivelamento da escala, por exemplo, entre a idade e a renda, pois a valor da renda em escala comparado à idade, é muito maior, sendo        assim, a aprendizagem não é eficiente;
+##6- O Encode da Classe ou transformação do atributos categoricos em discretos, é fundamental pois diversas bibliotecas não aceitam como entrada,           atributos caegóricos.
+##7- Divisão da base em dados de treinamento e dados de teste.
+
+# Naive Bayes - Aprendizagem Baysiana
+
+## Importando a Base de Dados
+
+```{r}
+base = read.csv('BaseCredito.csv')
+```
+
+## Eliminando coluna clientid
+
+```{r}
+base$clientid = NULL
+```
+
+## Preencher os valores negativos com a média dos valores positivos da coluna Age
+```{r}
+base$age = ifelse(base$age < 0, 40.92, base$age)
+```
+
+## Preencher os valores nulos
+```{r}
+base$age = ifelse(is.na(base$age), mean(base$age, na.rm = TRUE), base$age)
+```
+
+## Executando o Escalonamento, transformando os atributos numéricos na mesma escala
+```{r}
+base[, 1:3] = scale(base[, 1:3])
+```
+
+## Encode da classe
+```{r}
+base$default = factor(base$default, levels = c(0,1))
+```
+
+## Executando a divisão da base de dados entre treinamento e teste 
+```{r}
+library(caTools)
+set.seed(1)
+divisao = sample.split(base$income, SplitRatio = 0.75)
+base_treinamento = subset(base, divisao == TRUE)
+base_teste = subset(base, divisao == FALSE)
+```
+
+## Executando a primeira avaliação atraves da criação do classificador
+```{r}
+library(e1071)
+classificador = naiveBayes(x = base_treinamento[-4], y = base_treinamento$default)
+print(classificador)
+previsoes = predict(classificador, newdata = base_teste[-4])
+```
+
+## Executando a verificação do índice de acertos
+```{r}
+matriz_confusao = table(base_teste[, 4], previsoes)
+print(matriz_confusao)
+library(caret)
+confusao_nb = confusionMatrix(matriz_confusao)
+confusionMatrix(matriz_confusao)
+```
+
+## ZeroR 
+```{r}
+table(base_teste$default)
+```
+
+# Regressão Logística
+
+## Importando a Base de Dados
+```{r}
+base = read.csv('BaseCredito.csv')
+```
+
+## Eliminando coluna clientid
+```{r}
+base$clientid = NULL
+```
+
+## Preencher os valores negativos com a média dos valores positivos da coluna Age
+```{r}
+base$age = ifelse(base$age < 0, 40.92, base$age)
+```
+
+## Preencher os valores nulos
+```{r}
+base$age = ifelse(is.na(base$age), mean(base$age, na.rm = TRUE), base$age)
+```
+
+## Executando o Escalonamento, transformando os atributos numéricos na mesma escala
+```{r}
+base[, 1:3] = scale(base[, 1:3])
+```
+
+## Executando a divisão da base de dados entre treinamento e teste 
+```{r}
+library(caTools)
+set.seed(1)
+divisao = sample.split(base$income, SplitRatio = 0.75)
+base_treinamento = subset(base, divisao == TRUE)
+base_teste = subset(base, divisao == FALSE)
+```
+
+## Executando a primeira avaliação atraves da criação do classificador
+```{r}
+classificador = glm(formula = default ~ ., family = binomial, data = base_treinamento)
+probabilidades = predict(classificador, type = 'response', newdata = base_teste[-4])
+previsoes = ifelse(probabilidades > 0.5, 1, 0)
+```
+
+## Executando a verificação do índice de acertos
+```{r}
+matriz_confusao = table(base_teste[, 4], previsoes)
+print(matriz_confusao)
+library(caret)
+confusao_rl = confusionMatrix(matriz_confusao)
+confusionMatrix(matriz_confusao)
+```
+
+## ZeroR 
+```{r}
+table(base_teste$default)
+```
+
+# Árvore de Decisão
+
+## Importando a Base de Dados
+```{r}
+base = read.csv('BaseCredito.csv')
+```
+
+## Eliminando coluna clientid
+```{r}
+base$clientid = NULL
+```
+
+## Preencher os valores negativos com a média dos valores positivos da coluna Age
+```{r}
+base$age = ifelse(base$age < 0, 40.92, base$age)
+```
+
+## Preencher os valores nulos
+```{r}
+base$age = ifelse(is.na(base$age), mean(base$age, na.rm = TRUE), base$age)
+```
+
+## Executando o Escalonamento, transformando os atributos numéricos na mesma escala
+```{r}
+base[, 1:3] = scale(base[, 1:3])
+```
+
+## Encode da classe
+```{r}
+base$default = factor(base$default, levels = c(0,1))
+```
+
+## Executando a divisão da base de dados entre treinamento e teste 
+```{r}
+library(caTools)
+set.seed(1)
+divisao = sample.split(base$income, SplitRatio = 0.75)
+base_treinamento = subset(base, divisao == TRUE)
+base_teste = subset(base, divisao == FALSE)
+```
+
+## Executando a primeira avaliação atraves da criação do classificador
+```{r}
+library(rpart)
+classificador = rpart(formula = default ~ ., data = base_treinamento)
+print(classificador)
+library(rpart.plot)
+rpart.plot(classificador)
+```
+
+## Executando a verificação do índice de acertos
+```{r}
+previsoes = predict(classificador, newdata = base_teste[-4], type = 'class')
+matriz_confusao = table(base_teste[, 4], previsoes)
+print(matriz_confusao)
+library(caret)
+confusao_ad = confusionMatrix(matriz_confusao)
+confusionMatrix(matriz_confusao)
+```
+
+Como algoritmo mais eifciente temos o Regressão Logística, que pode ser constatado abaixo de acordo como a conerencia da matriz de confusão.
+
+# Naive Bayes - Aprendizagem Baysiana
+
+```{r}
+print(confusao_nb)
+```
+
+# Regressão Logística
+
+```{r}
+print(confusao_rl)
+```
+
+# Árvore de Decisão
+
+```{r}
+print(confusao_ad)
+```
+
