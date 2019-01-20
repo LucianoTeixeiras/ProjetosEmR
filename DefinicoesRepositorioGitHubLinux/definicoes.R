@@ -6,10 +6,6 @@
 
 ssh-keygen -t rsa -b 4096 -C "luciano.teixeiras@gmail.com"
 
-# GitLab
-
-ssh-keygen -t rsa -C "luciano.teixeiras@gmail.com" -b 4096
-
 # 2 - Adicionar a chave criada ao ssh-agent.
 
 # Ativando o agnete:
@@ -30,12 +26,6 @@ cat ~/.ssh/id_rsa.pub | clip
 
 git config --global user.email "luciano.teixeiras@gmail.com"
 git config --global user.name "LucianoTeixeiras"
-git config --global credential.helper 'cache --timeout=10000000'
-
-#GitLab
-
-git config --global user.email "luciano.teixeiras@gmail.com"
-git config --global user.name "luciano.teixeiras"
 git config --global credential.helper 'cache --timeout=10000000'
 
 # GitSubtree
